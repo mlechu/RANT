@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const fileUpload = require('express-fileupload')
 const helpers = require('../../helpers/index')
+const parse = require('../../helpers/parse')
 
 function CustomException (msg, code) {
     this.msg = msg
@@ -26,9 +27,11 @@ router.post('/', async (req, res) => {
         const fileName = await upload(req)
         console.log("File name:", fileName)
 
-        // TODO call parse pdf function.
+        const pdfContent = await parse.parsePDF(fileName)
+        req.session.fileName = fileName;
 
-        res.send('No errors, pdf uploaded.')
+        // console.log(pdfContent); 
+        res.send('No errors, pdf uploaded. Preview:' + pdfContent.text)
     } 
     catch (err) {
         if(err instanceof CustomException){
