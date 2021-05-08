@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Router, Route, Switch } from "react-router";
 import Modal from 'react-modal';
 import './App.css';
-import Webcamera from './webcam'
+// import Webcamera from './webcam'
 
 function FileUpload() {
   // State to store uploaded file
@@ -66,9 +66,16 @@ function FileUpload() {
                 </button>
             ) : null}
 
+      <footer className="text-white mt-8 md:mt-16 pl-12 md:pl-20 mb-5 flex flex-col space-y-4 text-xs sm:text-sm">
+        <div className="">
+          Copyright {new Date().getFullYear()} RANT.
+        </div>
+      </footer>
     </div></div></div>
   );
 }
+
+
 
 /**
  * Component to display thumbnail of image.
@@ -78,17 +85,14 @@ const ImageThumb = ({ image }) => {
 };
 
 
-<footer className="text-white mt-8 md:mt-16 pl-12 md:pl-20 mb-5 flex flex-col space-y-4 text-xs sm:text-sm">
-        <div className="">
-          Copyright {new Date().getFullYear()} RANT.
-        </div>
-</footer>
-
 
 export default function App() {
-  return <FileUpload />;
-  <Webcamera displaytext="Hello, Emily!"/>,
-
+  return (
+    <div>
+      <FileUpload />
+      {/* <Webcamera displaytext="Hello, Emily!"/>, */}
+    </div>
+  );
 }
 
 
