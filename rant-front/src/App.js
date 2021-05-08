@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from 'react';
 import { useState } from "react";
 import { Router, Route, Switch } from "react-router";
 import Modal from 'react-modal';
-
-
+import './App.css';
+import Webcamera from './webcam'
 
 function FileUpload() {
   // State to store uploaded file
