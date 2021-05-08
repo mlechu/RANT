@@ -25,10 +25,8 @@ router.post('/', async (req, res) => {
     try {
         const fileName = await upload(req)
         console.log("File name:", fileName)
-
-        // TODO call parse pdf function.
-
-        res.json({fileName: fileName})
+        req.session.fileName = fileName
+        res.sendStatus(200)
     } 
     catch (err) {
         if(err instanceof CustomException){
@@ -43,7 +41,6 @@ router.post('/', async (req, res) => {
 // uploads pdfs, and saves 
 const upload = async (req) => {
     try {
-        const {tags} = req.body
         if(!req.files) {
             throw new CustomException('No file uploaded', 400)
         }

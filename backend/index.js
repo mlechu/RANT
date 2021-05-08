@@ -1,10 +1,16 @@
 const express = require('express')
 const app = express()
+const session = require('express-session')
 
 require('dotenv').config({path: '.env'})
 
 // init middleware
 app.use(express.json({extended: false}))
+app.use(session({
+    secret: 'my secret key',
+    resave: false,
+    saveUninitialized: false
+}))
 
 app.get('/', (req, res) => {
     res.send('api running lol')
