@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+import { Router, Route, Switch } from "react-router";
+import Modal from 'react-modal';
 
-function App() {
+
+
+function FileUpload() {
+  // State to store uploaded file
+  const [file, setFile] = React.useState("");
+
+  // Handles file upload event and updates state
+  function handleUpload(event) {
+    setFile(event.target.files[0]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "2em",
+        }}
+      >
+    <div class="row">
+    <div class="col-lg-1 col-centered" id="upload-box">
+      <h1>RANT</h1>
+      <input type="file" onChange={handleUpload} />
+      <br></br>
+      <form><textarea placeholder='Job description here'></textarea></form>
+      {file && <ImageThumb image={file} />}
+
+      {/** MODAL */}
+      {Modal ? (
+                <button
+                  onClick={() => ("/")}
+                  className="px-3 py-1 border-2 border-white rounded-lg flex flex-row w-auto"
+                >
+                  <p>
+                    <em>Submit</em>
+                  </p>
+                </button>
+            ) : null}
+
+    </div></div></div>
   );
 }
 
-export default App;
+/**
+ * Component to display thumbnail of image.
+ */
+const ImageThumb = ({ image }) => {
+  /** return <img src={URL.createObjectURL(image)} alt={image.name} />;  for preview */
+};
+
+
+export default function App() {
+  return <FileUpload />;
+}
+
+
