@@ -20,24 +20,47 @@ function FileUpload() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          fontSize: "2em",
+          fontSize: "8em",
+          fontWeight: "bold",
         }}
       >
-    <div class="row">
-    <div class="col-lg-1 col-centered" id="upload-box">
-      <h1>RANT</h1>
-      <input type="file" onChange={handleUpload} />
-      <br></br>
-      <form><textarea placeholder='Job description here'></textarea></form>
+    <div class="">
+    <div class="test" id="upload-box">
+    <div>👋 Hello.<div className="inline opacity-50">Welcome to RANT.</div></div>
+      <input type="file" onChange={handleUpload} style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "20px",
+        }} />
+      <form><textarea placeholder='Job description here' 
+      style={{
+        fontSize: "20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      ></textarea></form>
       {file && <ImageThumb image={file} />}
 
-      {/** MODAL */}
+      {/** MODALSDKJFLSDKFJ */}
       {Modal ? (
                 <button
-                  onClick={() => ("/")}
+                style={{
+                  fontSize: "20px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                  onClick={() => ("/webcam")}
                   className="px-3 py-1 border-2 border-white rounded-lg flex flex-row w-auto"
                 >
-                  <p>
+                  <p style={{
+                  fontSize: "20px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}>
                     <em>Submit</em>
                   </p>
                 </button>
@@ -50,17 +73,25 @@ function FileUpload() {
 /**
  * Component to display thumbnail of image.
  */
- const ImageThumb = ({ image }) => {
+const ImageThumb = ({ image }) => {
   /** return <img src={URL.createObjectURL(image)} alt={image.name} />;  for preview */
 };
 
+
+<footer className="text-white mt-8 md:mt-16 pl-12 md:pl-20 mb-5 flex flex-col space-y-4 text-xs sm:text-sm">
+        <div className="">
+          Copyright {new Date().getFullYear()} RANT.
+        </div>
+</footer>
+
+
 export default function App() {
-  return (
-    <div>
-      <FileUpload />
-      <Webcamera displaytext="Hello, Emily!"/>,
-    </div>
-  );
+  return <FileUpload />;
+  <Webcamera displaytext="Hello, Emily!"/>,
+
 }
+
+
+
 
 
