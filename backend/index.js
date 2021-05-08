@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/pdf', require('./routes/api/pdf'))
 app.use('/api/transcipt', require('./routes/api/transcript'))
+app.use('/api/questions', require('./routes/api/questions'))
 
 // @route  GET invalid routes
 // @desc   Display page not found message

@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
 
         // TODO call parse pdf function.
 
-        res.send('No errors, pdf uploaded.')
+        res.json({fileName: fileName})
     } 
     catch (err) {
         if(err instanceof CustomException){
