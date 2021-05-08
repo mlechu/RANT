@@ -50,13 +50,17 @@ function FileUpload() {
 /**
  * Component to display thumbnail of image.
  */
-const ImageThumb = ({ image }) => {
+ const ImageThumb = ({ image }) => {
   /** return <img src={URL.createObjectURL(image)} alt={image.name} />;  for preview */
 };
 
-
 export default function App() {
-  return <FileUpload />;
+  return (
+    <div>
+      <FileUpload />
+      <Webcamera displaytext="Hello, Emily!"/>,
+    </div>
+  );
 }
 
 
