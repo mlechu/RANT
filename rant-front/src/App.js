@@ -52,7 +52,7 @@ function FileUpload() {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-                  onClick={() => ("/webcam")}
+                  onClick={() => ("./webcam")}
                   className="px-3 py-1 border-2 border-white rounded-lg flex flex-row w-auto"
                 >
                   <p style={{
