@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Router, Route, Switch } from "react-router";
 import Modal from 'react-modal';
 import './App.css';
-// import Webcamera from './webcam'
 
 function FileUpload() {
   // State to store uploaded file
@@ -24,9 +23,7 @@ function FileUpload() {
           fontWeight: "bold",
         }}
       >
-    <div class="">
     <div class="test" id="upload-box">
-    <div>👋 Hello.<div className="inline opacity-50">Welcome to RANT.</div></div>
       <input type="file" onChange={handleUpload} style={{
           display: "flex",
           justifyContent: "center",
@@ -71,7 +68,7 @@ function FileUpload() {
           Copyright {new Date().getFullYear()} RANT.
         </div>
       </footer>
-    </div></div></div>
+    </div></div>
   );
 }
 
