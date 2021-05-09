@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Router, Route, Switch } from "react-router";
 import Modal from 'react-modal';
 import './App.css';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 // import Webcamera from './webcam'
 
 function FileUpload() {
@@ -12,6 +13,23 @@ function FileUpload() {
   // Handles file upload event and updates state
   function handleUpload(event) {
     setFile(event.target.files[0]);
+  }
+
+  const Dictaphone = () => {
+    const { transcript, resetTranscript } = useSpeechRecognition();
+  
+    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+      return null;
+    }
+  
+    return (
+      <div>
+        <button onClick={SpeechRecognition.startListening}>Start</button>
+        <button onClick={SpeechRecognition.stopListening}>Stop</button>
+        <button onClick={resetTranscript}>Reset</button>
+        <p>{transcript}</p>
+      </div>
+    );
   }
 
   return (
@@ -85,12 +103,10 @@ const ImageThumb = ({ image }) => {
 };
 
 
-
 export default function App() {
   return (
     <div>
       <FileUpload />
-      {/* <Webcamera displaytext="Hello, Emily!"/>, */}
     </div>
   );
 }
