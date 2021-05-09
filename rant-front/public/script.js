@@ -41,9 +41,9 @@ video.addEventListener('play', () => {
             .withFaceDescriptors();
         // console.log("detections[0].expressions" + detections[0].expressions);
         if (detections != null) {
-            expressionsArray.push(detections[0].expressions);
+            // expressionsArray.push(detections[0].expressions);
         }
-        console.log(detections);
+        // console.log(detections);
         resizedDetections = faceapi.resizeResults(detections, displaySize)
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
         faceapi.draw.drawDetections(canvas, resizedDetections)
