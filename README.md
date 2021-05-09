@@ -1,4 +1,4 @@
-# RANT
+# R.A.N.T. 🤖
 Robots Are Not Taking our jobs bro
 ## Inspiration
 As computer science majors, the majority of us are introverts. Though we may rock the technical interview, we bomb the "casual coffee chat" one. Our only friends are on Discord, which don't really count as they're all virtual. To achieve our dream of getting a $500/hour starting base job without working 9 to 5, we created R.A.N.T. which stands for Robots Are Not Taking our jobs (because they’re helping people get jobs...get it?). 
