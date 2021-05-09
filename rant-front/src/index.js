@@ -3,26 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Webcam from "react-webcam";
+// import Webcam from "react-webcam";
 
-const WebcamComponent = () => <Webcam />;
+// const WebcamComponent = () => <Webcam />;
 
-class WebcamCapture extends React.Component {
-  render() {
-    const videoConstraints = {
-      width: 1280,
-      height: 720,
-      facingMode: "user"
-    };
+// class WebcamCapture extends React.Component {
+//   render() {
+//     const videoConstraints = {
+//       width: 1280,
+//       height: 720,
+//       facingMode: "user"
+//     };
 
-    return <Webcam videoConstraints={videoConstraints} />;
-  }
-}
+//     return <Webcam videoConstraints={videoConstraints} />;
+//   }
+// }
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <WebcamCapture />
+    {/* <WebcamCapture /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

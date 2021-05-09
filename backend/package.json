@@ -13,6 +13,8 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "pdf-parse": "^1.1.1",
+    "express-session": "^1.17.1",
+    "openai-api": "^1.1.2",
     "pdf2json": "^1.2.1"
   }
 }

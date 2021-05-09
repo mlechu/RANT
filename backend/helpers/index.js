@@ -6,5 +6,6 @@ function randomValueHex (len) {
 }
 
 module.exports = {
-    randomValueHex
+    randomValueHex,
+    getQuestions : require('./openAI').getQuestions
 }
