@@ -1,6 +1,3 @@
-// import { Date } from 'prismic-reactjs';
-// import { format } from 'date-fns-tz';
-
 const video = document.getElementById('video');
 
 Promise.all([
@@ -21,8 +18,6 @@ async function startVideo() {
     );
 }
 
-// startVideo()
-
 let canvas;
 let displaySize;
 let resizedDetections;
@@ -35,29 +30,43 @@ video.addEventListener('play', () => {
     displaySize = { width: video.width, height: video.height };
     faceapi.matchDimensions(canvas, displaySize);
     
-    // setInterval(async () => {
-    const myFunction = async () => {
+    setInterval(async () => {
         const detections = await faceapi
             .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
             .withFaceLandmarks()
             .withFaceExpressions()
             .withFaceDescriptors();
-        // console.log("detections[0].expressions" + detections[0].expressions);
+        
         if (detections != null) {
             expressionsArray.push(detections[0].expressions);
         }
-        console.log(detections);
+        
         resizedDetections = faceapi.resizeResults(detections, displaySize)
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
         faceapi.draw.drawDetections(canvas, resizedDetections)
         faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
         faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-    }
-
-    setInterval(myFunction, 3000);
-
+    }, 3000)
+    
     return {
         expressions: expressionsArray,
     };
-    
-});  
+
+});
+
+
+
+// push expressions every 3 seconds: expressions object (contains expression names + values)
+// send all data to backend when submit button is pushed
+
+
+
+// audio:
+var recognition = new webkitSpeechRecognition();
+recognition.continuous = true;
+
+var output = document.getElementById('output');
+recognition.onresult = function(event) {
+  output.textContent = event.results[0][0].transcript;
+  console.log(output.textContent);
+};

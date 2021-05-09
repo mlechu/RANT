@@ -7,8 +7,6 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    {/* <WebcamCapture /> */}
-    <div>Hello world</div>
   </React.StrictMode>,
   document.getElementById('root')
 );

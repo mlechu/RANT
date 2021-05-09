@@ -26,7 +26,7 @@
     -->
     <title>RANT</title>
     <script defer src="face-api.min.js"></script>
-    <script defer src="script.js"></script>
+    <script defer type="module" src="script.js" ></script>
     <style>
       body {
         margin: 0;
@@ -45,7 +45,9 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <video id="video" width="720" height="560" autoplay></video>
+    <div id="video-container">
+      <video id="video" width="720" height="560" autoplay muted></video>
+    </div>
     <div id="root"></div>
   </body>
 </html>
