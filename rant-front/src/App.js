@@ -4,7 +4,7 @@ import { Router, Route, Switch } from "react-router";
 import Modal from 'react-modal';
 import './App.css';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
-// import Webcamera from './webcam'
+import logo from './logo.png';
 
 function FileUpload() {
   // State to store uploaded file
@@ -15,36 +15,25 @@ function FileUpload() {
     setFile(event.target.files[0]);
   }
 
-  const Dictaphone = () => {
-    const { transcript, resetTranscript } = useSpeechRecognition();
-  
-    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-      return null;
-    }
-  
-    return (
-      <div>
-        <button onClick={SpeechRecognition.startListening}>Start</button>
-        <button onClick={SpeechRecognition.stopListening}>Stop</button>
-        <button onClick={resetTranscript}>Reset</button>
-        <p>{transcript}</p>
-      </div>
-    );
-  }
+  // function handleSubmit() {
+  //   let res = await axios.post();
+  // }
 
   return (
-    <div
-      style={{
+    <div style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        fontSize: "8em",
-        fontWeight: "bold",
-      }}
-    >
-      <div className="">
+        // fontSize: "8em",
+        // fontWeight: "bold",
+      }}>
+        <div>
+          <img src={logo} />
+          <br /> 
+          <br />
+        </div>
+        
         <div className="test" id="upload-box">
-          <div>👋 Hello.<div className="inline opacity-50">Welcome to RANT.</div></div>
           <input type="file" onChange={handleUpload} style={{
             display: "flex",
             justifyContent: "center",
@@ -57,8 +46,7 @@ function FileUpload() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-            }}
-          ></textarea></form>
+            }}></textarea></form>
           {file && <ImageThumb image={file} />}
 
           {/** MODALSDKJFLSDKFJ */}
@@ -70,7 +58,7 @@ function FileUpload() {
                 justifyContent: "center",
                 alignItems: "center",
               }}
-              onClick={() => ("./webcam")}
+              // onClick={handleSubmit}
               className="px-3 py-1 border-2 border-white rounded-lg flex flex-row w-auto"
             >
               <p style={{
@@ -87,9 +75,9 @@ function FileUpload() {
           <footer className="text-white mt-8 md:mt-16 pl-12 md:pl-20 mb-5 flex flex-col space-y-4 text-xs sm:text-sm">
             <div className="footer">
               Copyright {new Date().getFullYear()} RANT.
-        </div>
+            </div>
           </footer>
-        </div></div></div>
+        </div></div>
   );
 }
 

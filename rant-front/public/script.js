@@ -1,6 +1,3 @@
-// import { Date } from 'prismic-reactjs';
-// import { format } from 'date-fns-tz';
-
 const video = document.getElementById('video');
 
 Promise.all([
