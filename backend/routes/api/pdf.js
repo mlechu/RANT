@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const fileUpload = require('express-fileupload')
+const fs = require('fs');
 const helpers = require('../../helpers/index')
 const parse = require('../../helpers/parse')
+const entityAnalysis = require('../../helpers/entity-analysis')
 
 function CustomException (msg, code) {
     this.msg = msg
@@ -27,10 +29,22 @@ router.post('/', async (req, res) => {
         const fileName = await upload(req)
         console.log("File name:", fileName)
 
-        const pdfContent = await parse.parsePDF(fileName)
-        // console.log(pdfContent); 
+        let entities;
 
-        req.session.fileName = fileName
+        await parse.parsePDF(fileName, ()=>{
+            fs.readFile(process.env.PWD + '/PDFs/'+ fileName + '.txt', async (err, data)=>{
+                // console.log(data);
+                entities = await entityAnalysis.analyze(data.toString());
+            });
+        })
+
+        req.session.fileName = fileName;
+
+        // console.log(text);
+        // entityAnalysis.analyze(text);
+        // console.log(text.toString());
+        // entityAnalysis.analyze(text.toString());
+        
         // res.send('No errors, pdf uploaded. Pages: ' + pdfContent.length)
         res.sendStatus(200)
     } 
