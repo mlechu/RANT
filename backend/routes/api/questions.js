@@ -1,14 +1,17 @@
 const express = require('express')
 const router = express.Router()
-
+const helpers = require('../../helpers/index')
 router.get('/', (req, res) => {
     try {
         if(!req.session.fileName) {
             return res.status(400).json({errors: [{msg: 'No files linked with the current user. Please upload a file before accessing this route.'}]})
         }
         console.log("accessing file: ", req.session.fileName)
+        
         // TODO parse pdf function.
+
         // TODO from the parsed data, get questions from OpenAI
+        const getQuestions = helpers.getQuestions('keywordJson')
 
         res.json({questions: ['Placeholder question 1', 'Placeholder question 2', 'Placeholder question 3']})
     } catch (err) {
@@ -16,5 +19,5 @@ router.get('/', (req, res) => {
         res.status(500).json({errors: [{msg: 'Server error'}]})
     }
 });
-  
+
 module.exports = router
