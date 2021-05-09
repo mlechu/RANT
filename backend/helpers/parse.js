@@ -16,7 +16,7 @@ const pdf2json = require('pdf2json');
 //     // });
 // } 
 
-async function parsePDF(fileName){
+async function parsePDF(fileName, callback){
     pdfParser = new pdf2json(this, true);
     return new Promise((resolve, reject) => {
         fs.readFile('./PDFs/' + fileName, (err, buf) => {
@@ -30,7 +30,7 @@ async function parsePDF(fileName){
                     // txt = pdfParser.getRawTextContent()
                     // resolve(txt)
                     pages = pdfData.formImage.Pages;
-                    writeToText(fileName, pages);
+                    writeToText(fileName, pages, callback);
                     resolve(pages);
                 })
 
@@ -40,7 +40,7 @@ async function parsePDF(fileName){
     })
 } 
 
-function writeToText(fileName, pages) {
+function writeToText(fileName, pages, callback) {
     var stream = fs.createWriteStream('./PDFs/' + fileName + '.txt', {flags:'a'});
     for (p of pages) {
         let yVal = undefined;
@@ -56,7 +56,10 @@ function writeToText(fileName, pages) {
             }
         }
     }
+
+    stream.on('close', ()=>{callback()}) // i am screaming
     stream.end();
+
 }
 
 function reverseEncoding(str) {

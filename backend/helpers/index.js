@@ -9,3 +9,4 @@ module.exports = {
     randomValueHex,
     getQuestions : require('./openAI').getQuestions
 }
+// TODO: make the helpers all work like this
