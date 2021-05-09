@@ -1,12 +1,40 @@
 const templates = [
-  'What was it like working with [company]?',
-  'What was a challenge you faced when _________?',
-  'What are your favourite aspects of [technology]?',
-  'Why did you choose [technology] in [project]?',
-  'Can you tell me more about [project]?'
+  {
+    q: 'What was it like working with _blank_?', 
+    a: [['language', 'company']]
+  },
+  {
+    q: 'What was a challenge you faced working with _blank_?', 
+    a: [['language', 'company']]
+  },
+  {
+    q: 'What are your favourite aspects of _blank_?', 
+    a: [['language']]
+  },
+  // {
+  //   q: 'Why did you choose _blank_ in _blank_?', 
+  //   a: [['language'],
+  //       ['project']]
+  // },
+  {
+    q: 'Why did you choose _blank_ in your work?', 
+    a: [['language']]
+  },
+  {
+    q: 'Can you tell me more about _blank_?', 
+    a: [['company', 'project']]
+  },
+  {
+    q: 'What was your favourite part about working at _blank_?', 
+    a: [['company']]
+  },
+  {
+    q: 'Describe your experience working with _blank_.', 
+    a: [['project']]
+  },
 ]
 
-const skills = [
+const languages = [
   'Java',
   'JavaScript',
   'PHP',
@@ -565,6 +593,6 @@ const companies = [
 
 module.exports = {
   companies,
-  skills,
+  languages,
   templates
 }

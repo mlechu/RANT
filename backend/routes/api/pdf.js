@@ -29,14 +29,14 @@ router.post('/', async (req, res) => {
         const fileName = await upload(req)
         console.log("File name:", fileName)
 
-        let entities;
+        // let entities;
 
-        await parse.parsePDF(fileName, ()=>{
-            fs.readFile(process.env.PWD + '/PDFs/'+ fileName + '.txt', async (err, data)=>{
-                // console.log(data);
-                entities = await entityAnalysis.analyze(data.toString());
-            });
-        })
+        // await parse.parsePDF(fileName, ()=>{
+        //     fs.readFile(process.env.PWD + '/PDFs/'+ fileName + '.txt', async (err, data)=>{
+        //         // console.log(data);
+        //         entities = await entityAnalysis.analyze(data.toString());
+        //     });
+        // })
 
         req.session.fileName = fileName;
 

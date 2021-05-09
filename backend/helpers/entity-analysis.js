@@ -3,7 +3,7 @@ const language = require('@google-cloud/language');
 const client = new language.LanguageServiceClient();
 const tdata = require('../training-data')
 
-const analyze = async function(text) {  
+const analyze = async function(text, callback) {  
 
   const document = {
     content: text,
@@ -22,16 +22,16 @@ const analyze = async function(text) {
   
   // console.log('Entities:');
   let processed = {
-    skills: [],
+    languages: [],
     companies: [],
     other: [],
   }
   entities.forEach(entity => {
-    if (tdata.skills.includes(entity.name)) {
-      processed.skills.push(entity.name)
+    if (tdata.languages.includes(entity.name)) {
+      processed.languages.push(entity.name)
     } else if (tdata.companies.includes(entity.name)){
       processed.companies.push(entity.name)
-    } else if (entity.salience > 0.009) {
+    } else if (entity.salience > 0.02 && entity.name && entity.name.length <= 20) {
       processed.other.push(entity.name)
     }
     // console.log(entity.name);
@@ -40,7 +40,8 @@ const analyze = async function(text) {
     //   console.log(` - Wikipedia URL: ${entity.metadata.wikipedia_url}`);
     // }
   });
-  console.log(processed)
+  // console.log(processed)
+  callback(processed);
   return processed;
   // processed is an object
   // processed.companies = []
