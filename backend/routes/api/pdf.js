@@ -28,10 +28,10 @@ router.post('/', async (req, res) => {
         console.log("File name:", fileName)
 
         const pdfContent = await parse.parsePDF(fileName)
-        req.session.fileName = fileName;
-
+        // req.session.fileName = fileName;
         // console.log(pdfContent); 
-        res.send('No errors, pdf uploaded. Preview:' + pdfContent.text)
+
+        res.send('No errors, pdf uploaded. Pages: ' + pdfContent.length)
     } 
     catch (err) {
         if(err instanceof CustomException){
