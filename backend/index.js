@@ -14,6 +14,7 @@ app.use(session({
 
 app.get('/', (req, res) => {
     res.send('api running lol')
+    // res.sendFile(path.join(__dirname + '/index.html'));
 })
 
 app.use('/api/pdf', require('./routes/api/pdf'))
@@ -27,6 +28,6 @@ app.get('*', (req, res) => {
 	res.status(404).send('404');
 });
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log(`Listening on port 3001`)
 })
